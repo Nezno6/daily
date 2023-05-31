@@ -5,7 +5,7 @@ class MainTest {
 
     @Test
     void main() {
-        String expected = "Hello Word!";
+        String expected = "Hello Word!!";
         String actual = Main.texting();
         Assertions.assertEquals(expected, actual);
     }
