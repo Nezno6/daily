@@ -12,10 +12,12 @@ repositories {
 }
 
 dependencies {
+    // JUnit5
     testImplementation(kotlin("test"))
 }
 
 tasks.test {
+    // JUnit5
     useJUnitPlatform()
 }
 
