@@ -4,6 +4,6 @@ public class Main {
     }
 
     public static String texting() {
-        return "Hello Word!";
+        return "Hello Word!!";
     }
 }
