@@ -16,20 +16,22 @@ public class UniqueValueFinder {
         return filterOutValuesOccurring3TimesPrivate(numbers);
     }
 
-    private List<Integer> filterOutValuesOccurring3TimesPrivate(Integer[] numbers) {// ==> time O(n^2), space O(n)
-        List<Integer> uniqueNumbers = new ArrayList<>(); // time O(1), space O(1)
-        List<Integer> integers = new ArrayList<>(Arrays.asList(numbers)); //time 0(n), space O(n)
-        // Arrays.asList() is generally faster than using streams for small arrays.
-        // However, for larger arrays, streams may be faster due to their parallel processing capabilities.
-
+    private List<Integer> filterOutValuesOccurring3TimesPrivate(Integer[] numbers) {// ==> time O(n), space O(n)
+        Set<Integer> uniqueNumbers = new HashSet<>(); // time O(1), space O(1)
+        Set<Integer> uniqueNumbersToRemove = new HashSet<>(); // time O(1), space O(1)
+        int uniqueNumber = -1;
         for (Integer number : numbers) { // time O(n), space O(n)
-            integers.remove(number); // time O(n), space O(n)
-            if (!integers.contains(number)) { // time O(n), space O(n)
-                uniqueNumbers.add(number); // time amortized O(1), space amortized O(1)
+            if (!uniqueNumbers.add(number)) { // time O(1), space O(1)
+                uniqueNumbersToRemove.add(number); // time O(1), space O(1)
             }
         }
-        return uniqueNumbers;
-        // time O(n^2), space O(n)
+        for (Integer number : numbers) { // time O(n), space O(n)
+            if (!(uniqueNumbers.contains(number) && uniqueNumbersToRemove.contains(number))) { // time O(1), space O(1)
+                uniqueNumber = number;
+            }
+        }
+        return List.of(uniqueNumber);
+        // time O(2n), space O(n)
     }
 
     private void throwsIfNullInArrayOrEmptyArray(Integer[] numbers) {
