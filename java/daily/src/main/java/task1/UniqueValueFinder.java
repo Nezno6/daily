@@ -16,22 +16,14 @@ public class UniqueValueFinder {
         return filterOutValuesOccurring3TimesPrivate(numbers);
     }
 
-    private List<Integer> filterOutValuesOccurring3TimesPrivate(Integer[] numbers) {// ==> time O(n), space O(n)
-        Set<Integer> uniqueNumbers = new HashSet<>(); // time O(1), space O(1)
-        Set<Integer> uniqueNumbersToRemove = new HashSet<>(); // time O(1), space O(1)
-        int uniqueNumber = -1;
-        for (Integer number : numbers) { // time O(n), space O(n)
-            if (!uniqueNumbers.add(number)) { // time O(1), space O(1)
-                uniqueNumbersToRemove.add(number); // time O(1), space O(1)
-            }
+    private List<Integer> filterOutValuesOccurring3TimesPrivate(Integer[] numbers) {// ==> time O(n), space O(1)
+        int ones = 0;
+        int twos = 0;
+        for (int number : numbers) { // time O(n), space O(1)
+            ones = (ones ^ number) & ~twos; // time O(1), space O(1)
+            twos = (twos ^ number) & ~ones; // time O(1), space O(1)
         }
-        for (Integer number : numbers) { // time O(n), space O(n)
-            if (!(uniqueNumbers.contains(number) && uniqueNumbersToRemove.contains(number))) { // time O(1), space O(1)
-                uniqueNumber = number;
-            }
-        }
-        return List.of(uniqueNumber);
-        // time O(2n), space O(n)
+        return List.of(ones);
     }
 
     private void throwsIfNullInArrayOrEmptyArray(Integer[] numbers) {

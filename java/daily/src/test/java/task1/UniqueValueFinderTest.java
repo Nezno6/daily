@@ -42,7 +42,8 @@ class UniqueValueFinderTest {
     static Stream<Arguments> provideDateAsArrayOfIntegersWhereEveryIntegerOccursThreeTimesExceptOneUniqueInteger(){
         return Stream.of(
                 Arguments.of(new Integer[]{6, 1, 3, 3, 3, 6, 6},1),
-                Arguments.of(new Integer[]{13, 19, 13, 13},19)
+                Arguments.of(new Integer[]{13, 19, 13, 13},19),
+                Arguments.of(new Integer[]{6, 4, 3, 3, 3, 6, 6},4)
         );
     }
 
