@@ -15,19 +15,19 @@ class UniqueValueFinderTest {
 
     @Test
     void testGiven_empty_array_When_running_algorithm_Then_empty_array_exception_should_be_thrown() {
-        assertThrows(EmptyArrayException.class,() -> new UniqueValueFinder().filterOutValuesOccurring3TimesSpaceComplexityNSquared(new Integer[] {}));
+        assertThrows(EmptyArrayException.class,() -> new UniqueValueFinder().filterOutValuesOccurring3Times(new Integer[] {}));
     }
 
     @Test
     void testGiven_array_with_null_element_When_running_algorithm_Then_null_element_exception_should_be_thrown() {
-        assertThrows(NullElementException.class,() -> new UniqueValueFinder().filterOutValuesOccurring3TimesSpaceComplexityNSquared(new Integer[] {null}));
+        assertThrows(NullElementException.class,() -> new UniqueValueFinder().filterOutValuesOccurring3Times(new Integer[] {null}));
     }
 
     @ParameterizedTest
     @MethodSource("provideDateAsArrayWithNullObjectOrEmptyArray")
     void testGiven_array_with_null_element_or_empty_array_When_running_algorithm_Then_appropriate_exception_should_be_thrown
             (Integer[] numbers, Class<Exception> expected) {
-        assertThrows(expected,() -> new UniqueValueFinder().filterOutValuesOccurring3TimesSpaceComplexityNSquared(numbers));
+        assertThrows(expected,() -> new UniqueValueFinder().filterOutValuesOccurring3Times(numbers));
     }
 
     @ParameterizedTest
@@ -36,7 +36,7 @@ class UniqueValueFinderTest {
                                                                                            Integer expected)
     {
         UniqueValueFinder uniqueValueFinder = new UniqueValueFinder();
-        Integer actual = uniqueValueFinder.filterOutValuesOccurring3TimesSpaceComplexityNSquared(numbers).get(0);
+        Integer actual = uniqueValueFinder.filterOutValuesOccurring3Times(numbers).get(0);
         assertEquals(expected, actual);
     }
 

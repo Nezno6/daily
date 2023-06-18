@@ -11,12 +11,12 @@ import task1.exception.NullElementException;
 
 public class UniqueValueFinder {
 
-    public List<Integer> filterOutValuesOccurring3TimesSpaceComplexityNSquared(Integer[] numbers){
+    public List<Integer> filterOutValuesOccurring3Times(Integer[] numbers){
         throwsIfNullInArrayOrEmptyArray(numbers);
-        return filterOutValuesOccurring3TimesSpaceComplexityNNSquaredPrivate(numbers);
+        return filterOutValuesOccurring3TimesPrivate(numbers);
     }
 
-    private List<Integer> filterOutValuesOccurring3TimesSpaceComplexityNNSquaredPrivate(Integer[] numbers) {
+    private List<Integer> filterOutValuesOccurring3TimesPrivate(Integer[] numbers) {// ==> time O(n^2), space O(n)
         List<Integer> uniqueNumbers = new ArrayList<>(); // time O(1), space O(1)
         List<Integer> integers = new ArrayList<>(Arrays.asList(numbers)); //time 0(n), space O(n)
         // Arrays.asList() is generally faster than using streams for small arrays.
@@ -29,7 +29,7 @@ public class UniqueValueFinder {
             }
         }
         return uniqueNumbers;
-        // time O(n), space O(n)
+        // time O(n^2), space O(n)
     }
 
     private void throwsIfNullInArrayOrEmptyArray(Integer[] numbers) {
