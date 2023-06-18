@@ -11,21 +11,25 @@ import task1.exception.NullElementException;
 
 public class UniqueValueFinder {
 
-    public List<Integer> filterOutValuesOccurring3TimesSpaceComplexityN(Integer[] numbers){
+    public List<Integer> filterOutValuesOccurring3TimesSpaceComplexityNSquared(Integer[] numbers){
         throwsIfNullInArrayOrEmptyArray(numbers);
-        return filterOutValuesOccurring3TimesSpaceComplexityNPrivate(numbers);
+        return filterOutValuesOccurring3TimesSpaceComplexityNNSquaredPrivate(numbers);
     }
 
-    private List<Integer> filterOutValuesOccurring3TimesSpaceComplexityNPrivate(Integer[] numbers) {
-        List<Integer> uniqueNumbers = new ArrayList<>(); // space O(n)
-        List<Integer> integers = new ArrayList<>(Arrays.stream(numbers).toList()); //time 0(n) space O(2n)
-        for (Integer number : numbers) { // time O(2n)
-            integers.remove(number); // time O(3n)
-            if (!integers.contains(number)) { // time O(4n)
-                uniqueNumbers.add(number); // time O(5n) => time O(n), space O(n)
+    private List<Integer> filterOutValuesOccurring3TimesSpaceComplexityNNSquaredPrivate(Integer[] numbers) {
+        List<Integer> uniqueNumbers = new ArrayList<>(); // time O(1), space O(1)
+        List<Integer> integers = new ArrayList<>(Arrays.asList(numbers)); //time 0(n), space O(n)
+        // Arrays.asList() is generally faster than using streams for small arrays.
+        // However, for larger arrays, streams may be faster due to their parallel processing capabilities.
+
+        for (Integer number : numbers) { // time O(n), space O(n)
+            integers.remove(number); // time O(n), space O(n)
+            if (!integers.contains(number)) { // time O(n), space O(n)
+                uniqueNumbers.add(number); // time amortized O(1), space amortized O(1)
             }
         }
         return uniqueNumbers;
+        // time O(n), space O(n)
     }
 
     private void throwsIfNullInArrayOrEmptyArray(Integer[] numbers) {
