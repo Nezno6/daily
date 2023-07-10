@@ -2,7 +2,6 @@ import exception.EmptyArrayException
 import exception.NullElementException
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -18,13 +17,16 @@ internal class UniqueValueFinderTest {
     fun testGiven_empty_array_When_running_algorithm_Then_empty_array_exception_should_be_thrown() {
         assertThrows(EmptyArrayException::class.java) {
             uniqueValueFinder.filterOutValuesOccurring3Times(arr)
-            println(arr.isEmpty())}
+            println(arr.isEmpty())
+        }
     }
 
     @Test
     fun testGiven_array_with_null_element_When_running_algorithm_Then_null_element_exception_should_be_thrown() {
-        assertThrows(NullElementException::class.java) { uniqueValueFinder
-            .filterOutValuesOccurring3Times(arrayOf(null))}
+        assertThrows(NullElementException::class.java) {
+            uniqueValueFinder
+                .filterOutValuesOccurring3Times(arrayOf(null))
+        }
     }
 
     @ParameterizedTest
@@ -68,6 +70,4 @@ internal class UniqueValueFinderTest {
             )
         }
     }
-
-
 }
