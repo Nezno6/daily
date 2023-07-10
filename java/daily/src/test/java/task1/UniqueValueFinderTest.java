@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import task1.exception.EmptyArrayException;
 import task1.exception.NullElementException;
 import java.util.stream.Stream;
@@ -57,5 +58,4 @@ class UniqueValueFinderTest {
                 Arguments.of(new Integer[]{13, 20, 19, null, 13},NullElementException.class)
         );
     }
-
 }
