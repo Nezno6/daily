@@ -5,13 +5,16 @@ package task1;
 //For example, given [6, 1, 3, 3, 3, 6, 6], return 1. Given [13, 19, 13, 13], return 19.
 //Do this in O(N) time and O(1) space.
 
-import java.util.*;
 import task1.exception.EmptyArrayException;
 import task1.exception.NullElementException;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
 public class UniqueValueFinder {
 
-    public List<Integer> filterOutValuesOccurring3Times(Integer[] numbers){
+    public List<Integer> filterOutValuesOccurring3Times(Integer[] numbers) {
         throwsIfNullInArrayOrEmptyArray(numbers);
         return filterOutValuesOccurring3TimesPrivate(numbers);
     }
